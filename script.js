@@ -108,6 +108,7 @@ cityName.textContent="GPS Tidak Diizinkan";
 
 }
 
+
 );// ======================================
 // WEATHER AI PREMIUM
 // script.js - PART 2
@@ -234,6 +235,67 @@ async function cariKota(){
         console.log(err);
 
         alert("Terjadi kesalahan.");
+
+    }
+
+}
+// ======================================
+// WEATHER AI PREMIUM
+// script.js - PART 3
+// ======================================
+
+// Ambil Cuaca + Forecast 7 Hari + 24 Jam
+async function getWeather(lat, lon){
+
+    const url =
+`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    temp.textContent =
+        data.current.temperature_2m + "°C";
+
+    humidity.textContent =
+        data.current.relative_humidity_2m + "%";
+
+    wind.textContent =
+        data.current.wind_speed_10m + " km/jam";
+
+    condition.textContent =
+        weatherText(data.current.weather_code);
+
+    tampilForecast(data.daily);
+    tampilForecast24Jam(data.hourly);
+
+}
+
+// ==============================
+// Forecast 24 Jam
+// ==============================
+
+const hourlyForecast =
+document.getElementById("hourlyForecast");
+
+function tampilForecast24Jam(hourly){
+
+    hourlyForecast.innerHTML = "";
+
+    for(let i = 0; i < 24; i++){
+
+        const card = document.createElement("div");
+
+        card.className = "card";
+
+        const jam = hourly.time[i].split("T")[1];
+
+        card.innerHTML = `
+            <h3>${jam}</h3>
+            <h2>${weatherEmoji(hourly.weather_code[i])}</h2>
+            <p>${hourly.temperature_2m[i]}°C</p>
+        `;
+
+        hourlyForecast.appendChild(card);
 
     }
 
