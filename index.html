@@ -3,61 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather AI Ultra Premium</title>
+    <title>Weather AI Premium</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>🌤 Weather AI Ultra Premium</h1>
+    <h1>🌤 Weather AI Premium</h1>
 
     <div class="search-box">
         <input
             type="text"
             id="search"
-            placeholder="Cari kota..."
+            placeholder="Masukkan nama kota..."
         >
-
-        <button id="searchBtn">
-            Cari
-        </button>
+        <button id="searchBtn">Cari</button>
     </div>
-
 </header>
 
 <section id="currentWeather">
 
     <div class="city">
-
-        <h2 id="cityName">
-            Menunggu lokasi...
-        </h2>
-
+        <h2 id="cityName">Menunggu lokasi...</h2>
         <p id="dateTime"></p>
-
     </div>
 
     <div class="temperature">
-
         <h1 id="temp">--°C</h1>
-
-        <h3 id="condition">
-            Memuat...
-        </h3>
-
+        <h3 id="condition">Memuat...</h3>
     </div>
 
     <div class="details">
 
-        <div>
-            💧
-            <span id="humidity">--%</span>
+        <div class="card">
+            💧<br>
+            <span id="humidity">--%</span><br>
+            Kelembapan
         </div>
 
-        <div>
-            💨
-            <span id="wind">-- km/jam</span>
+        <div class="card">
+            💨<br>
+            <span id="wind">-- km/jam</span><br>
+            Angin
         </div>
 
     </div>
@@ -66,11 +54,17 @@
 
 <section>
 
-<h2>Prakiraan 7 Hari</h2>
+    <h2>📅 Prakiraan 7 Hari</h2>
 
-<div id="dailyForecast"></div>
+    <div id="dailyForecast"></div>
 
 </section>
+
+<footer>
+
+<p>Weather AI Premium ©2026</p>
+
+</footer>
 
 <script src="script.js"></script>
 
